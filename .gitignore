@@ -1,17 +1,20 @@
-# macOS
-.DS_Store
-Icon
-Icon?
-
 # Python
 __pycache__/
+*.pyc
 *.py[cod]
 *.egg-info/
 .venv/
 venv/
 
-# Build output (generated STLs / previews)
+# OS junk
+.DS_Store
+Icon
+Icon?
+
+# Build artifacts (keep the repo source-only)
 *.stl
 *_preview.png
+outputs/
 out/
 tiles/
+*.skill

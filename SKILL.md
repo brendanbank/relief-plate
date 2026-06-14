@@ -8,9 +8,11 @@ description: >-
   line-art, or logo into a printable relief/stamp/plate, or mentions "relief
   plate", "printing plate", "rolling press", "brayer", "linocut", "engraving
   plate", or "image to STL relief". Produces raised relief on a solid base.
+license: MIT
 metadata:
   version: "1.1.0"
   author: Barbara
+  license: MIT
   tested-on: "Bambu Lab X2D (0.4 mm nozzle, ~256 mm bed)"
 ---
 
