@@ -10,8 +10,8 @@ description: >-
   plate", or "image to STL relief". Produces raised relief on a solid base.
 license: MIT
 metadata:
-  version: "1.1.0"
-  author: Barbara
+  version: "1.1.1"
+  author: Brendan Bank
   license: MIT
   tested-on: "Bambu Lab X2D (0.4 mm nozzle, ~256 mm bed)"
 ---
@@ -19,6 +19,8 @@ metadata:
 # Relief printing plate from an image
 
 <!-- Changelog
+  1.1.1 - correct author/copyright attribution to Brendan Bank (built on a shared
+          computer that had set the author to Barbara). No functional change.
   1.1.0 - auto-split plates larger than the printer bed into dovetail-joined tiles
           (split_plate.py); hidden bottom-dovetails, 2 per seam, auto tab/pocket.
   1.0.0 - initial: image -> watertight relief STL (build_relief), detail test tiles

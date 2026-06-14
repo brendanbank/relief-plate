@@ -145,6 +145,8 @@ scripts/
 
 ## Changelog
 
+- **1.1.1** — correct author/copyright attribution to Brendan Bank; document how
+  split tiles recombine via hidden dovetails.
 - **1.1.0** — auto-split plates larger than the printer bed into dovetail-joined
   tiles (`split_plate.py`): hidden bottom-dovetails, 2 per seam, automatic
   tab/pocket assignment.
@@ -154,4 +156,4 @@ scripts/
 
 ## License
 
-MIT © Barbara — see [LICENSE](LICENSE).
+MIT © Brendan Bank — see [LICENSE](LICENSE).
