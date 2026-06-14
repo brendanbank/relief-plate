@@ -1,0 +1,5 @@
+# Runtime dependencies for the relief-plate skill.
+# Only the Python standard library plus these two packages are needed.
+# Latest stable at time of writing: numpy 2.4.6, Pillow 12.2.0.
+numpy>=1.21
+Pillow>=9.0
