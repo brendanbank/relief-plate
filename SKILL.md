@@ -10,7 +10,7 @@ description: >-
   plate", or "image to STL relief". Produces raised relief on a solid base.
 license: MIT
 metadata:
-  version: "1.1.1"
+  version: "1.2.0"
   author: Brendan Bank
   license: MIT
   tested-on: "Bambu Lab X2D (0.4 mm nozzle, ~256 mm bed)"
@@ -19,6 +19,17 @@ metadata:
 # Relief printing plate from an image
 
 <!-- Changelog
+  1.2.0 - correctness + watertightness fixes:
+          * region classification is now AREA-weighted, not per-triangle count, so a large
+            background no longer mis-fills as raised (the solid-black-blob bug on detailed art).
+          * removed the forced raised 1 mm-ish rim; the plate edge now sits flush at base
+            height. An explicit plate outline + base-forced outer pixel guarantee a full solid
+            base with NO spurious border (a border still appears only if it is in the image).
+          * finalize_mesh now runs with the SAME interpreter (it was invoked as `python3` and
+            silently failed wherever system python3 lacked numpy -> meshes shipped un-welded
+            and not watertight); plus robust angle-based hole-filling. Output is now genuinely
+            watertight (0 non-manifold edges) on detailed portraits.
+          * internal: merge same-height nested regions and emit one clean rectangular bottom.
   1.1.1 - correct author/copyright attribution to Brendan Bank (built on a shared
           computer that had set the author to Barbara). No functional change.
   1.1.0 - auto-split plates larger than the printer bed into dovetail-joined tiles
