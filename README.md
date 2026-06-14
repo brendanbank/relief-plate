@@ -145,6 +145,14 @@ scripts/
 
 ## Changelog
 
+- **1.2.0** — correctness & watertightness fixes (detailed-art quality):
+  area-weighted region classification (a large background no longer mis-fills as
+  raised — fixes the solid-black-blob bug); removed the forced raised rim so the
+  plate edge sits flush at base height (a border now appears only if it's in the
+  artwork) while still guaranteeing a full solid base; `finalize_mesh` now runs
+  with the same interpreter (it was silently failing where the system `python3`
+  lacked numpy, shipping un-welded meshes) and uses robust hole-filling — output
+  is genuinely watertight (0 non-manifold edges) on detailed portraits.
 - **1.1.1** — correct author/copyright attribution to Brendan Bank; document how
   split tiles recombine via hidden dovetails.
 - **1.1.0** — auto-split plates larger than the printer bed into dovetail-joined
