@@ -70,6 +70,38 @@ python3 scripts/build_tiles.py INPUT.png OUTDIR --size 230 --base 2 --relief 2 \
     --crop eye 560 1380 980 1700
 ```
 
+### Splitting a large plate into tiles — and recombining them
+
+When a plate is larger than the printer bed (~256 mm on the Bambu X2D), you don't
+have to shrink the artwork. Split it into a grid of tiles that **dovetail back
+together into one plate** after printing — the image stays full-size and the joints
+are hidden.
+
+1. **Plan** the grid. `PLAN` reports whether it fits and, if not, the grid plus one
+   `TILE` command per tile (and which tiles need support):
+   ```bash
+   python3 scripts/split_plate.py PLAN INPUT.png --size 400 --bed 256
+   # -> plate 400.0 x 266.7 mm | grid 2 x 2 = 4 tiles
+   #      TILE --col 0 --row 0   (col 0 = left, row 0 = bottom)
+   #      TILE --col 1 --row 0
+   #      ...
+   ```
+2. **Build & print** each tile (`tile_c{C}_r{R}.stl`). Each tile is the relief slab
+   sitting on a 2 mm bottom layer that carries the dovetails. Print every tile
+   relief-up.
+3. **Recombine.** Each shared seam has **two hidden bottom-dovetails**: one tile
+   gets the **tabs**, the neighbour gets matching **pockets** (cut with clearance).
+   Slot the tabs into the pockets and the tiles lock together edge-to-edge,
+   reforming the full image as a single plate. Because the dovetails live entirely
+   in the bottom 2 mm, the relief **butts straight across the seam** — the joint is
+   invisible from the top (the inked/printing surface) and only shows underneath.
+   Add a little glue in the pockets if you want the assembly permanent.
+
+**Support:** tiles that carry a **pocket** edge must be printed **with support**
+(support filament on the X2D aux nozzle); tiles with only **tabs** print without.
+The `TILE` command prints which case each tile is — by convention, `right`/`top`
+seams get tabs (no support) and `left`/`bottom` seams get pockets (support).
+
 ### `build_relief.py` flags
 
 | Flag | Meaning | Default |
